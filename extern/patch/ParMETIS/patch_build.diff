@@ -261,10 +261,10 @@ index 6a27074..0000000
 -install(FILES parmetis.h DESTINATION include)
 \ No newline at end of file
 diff --git a/libparmetis/CMakeLists.txt b/libparmetis/CMakeLists.txt
-index e8c3213..a4d7124 100644
+index e8c3213..b8ddac5 100644
 --- a/libparmetis/CMakeLists.txt
 +++ b/libparmetis/CMakeLists.txt
-@@ -1,13 +1,53 @@
+@@ -1,13 +1,52 @@
  # Include directories for library code.
 -include_directories(.)
 +file(GLOB parmetis_sources ${CMAKE_CURRENT_SOURCE_DIR}/*.c)
@@ -291,8 +291,7 @@ index e8c3213..a4d7124 100644
 +
 +target_link_libraries(${PROJECT_NAME}
 +  PUBLIC metis::metis GKlib::GKlib MPI::MPI_C
-+  PRIVATE GKlib::GKlib_compile_definitions
-+          $<BUILD_INTERFACE:$<$<NOT:$<C_COMPILER_ID:MSVC>>:GKlib::GKlib_warnings>>)
++  PRIVATE GKlib::GKlib_compile_definitions)
 +
 +target_compile_options(${PROJECT_NAME} PUBLIC $<$<AND:$<BOOL:${GPROF}>,$<BOOL:${HAVE_GPROF_SUPPORT}>>:-pg>)
 +

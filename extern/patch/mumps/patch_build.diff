@@ -1005,7 +1005,7 @@ index d4e6336..e565d0e 100644
  if(BUILD_DOUBLE)
  check_fortran_source_compiles(
 diff --git a/cmake/options.cmake b/cmake/options.cmake
-index 57572cd..29ae9a3 100644
+index 144fdd8..f4be94e 100644
 --- a/cmake/options.cmake
 +++ b/cmake/options.cmake
 @@ -2,16 +2,6 @@ include(GNUInstallDirs)
@@ -1025,7 +1025,7 @@ index 57572cd..29ae9a3 100644
  if(MUMPS_UPSTREAM_VERSION VERSION_GREATER_EQUAL 5.2)
    option(gemmt "GEMMT is recommended in User Manual if available" ON)
  endif()
-@@ -57,11 +47,6 @@ set(CMAKE_INSTALL_RPATH_USE_LINK_PATH true)
+@@ -57,9 +47,4 @@ set(CMAKE_INSTALL_RPATH_USE_LINK_PATH true)
  # Necessary for shared library with Visual Studio / Windows oneAPI
  set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS true)
  
@@ -1034,9 +1034,7 @@ index 57572cd..29ae9a3 100644
 -  get_filename_component(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} ABSOLUTE)
 -endif()
 -
- # --- auto-ignore build directory
- if(NOT EXISTS ${PROJECT_BINARY_DIR}/.gitignore)
-   file(WRITE ${PROJECT_BINARY_DIR}/.gitignore "*")
+ file(GENERATE OUTPUT .gitignore CONTENT "*")
 diff --git a/cmake/scalapack.cmake b/cmake/scalapack.cmake
 deleted file mode 100644
 index a9e9311..0000000

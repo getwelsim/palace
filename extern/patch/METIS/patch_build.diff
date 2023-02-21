@@ -255,10 +255,10 @@ index 9515a51..0000000
 -  install(FILES metis.h DESTINATION include)
 -endif()
 diff --git a/libmetis/CMakeLists.txt b/libmetis/CMakeLists.txt
-index fc6cec6..b0cfa01 100644
+index fc6cec6..0d0e7b4 100644
 --- a/libmetis/CMakeLists.txt
 +++ b/libmetis/CMakeLists.txt
-@@ -1,15 +1,53 @@
+@@ -1,15 +1,52 @@
 -# Add this directory for internal users.
 -include_directories(.)
 -
@@ -280,8 +280,7 @@ index fc6cec6..b0cfa01 100644
 +
 +target_link_libraries(${PROJECT_NAME}
 +  PUBLIC GKlib::GKlib
-+  PRIVATE GKlib::GKlib_compile_definitions
-+          $<BUILD_INTERFACE:$<$<NOT:$<C_COMPILER_ID:MSVC>>:GKlib::GKlib_warnings>>)
++  PRIVATE GKlib::GKlib_compile_definitions)
 +
 +target_compile_options(${PROJECT_NAME} PUBLIC $<$<AND:$<BOOL:${GPROF}>,$<BOOL:${HAVE_GPROF_SUPPORT}>>:-pg>)
 +
