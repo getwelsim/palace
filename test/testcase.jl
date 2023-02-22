@@ -13,6 +13,12 @@ function testcase(testdir, testconfig, testpostpro; np=1, rtol=1.0e-6, atol=1.0e
     postprodir    = joinpath(exampledir, "postpro", testpostpro)
     logdir        = joinpath(exampledir, "log")
 
+    if Sys.which("palace") != nothing
+        palace = "palace"
+    else
+        palace = joinpath(dirname(@__DIR__), "build", "bin", "palace")
+    end
+
     # Cleanup
     rm(postprodir; force=true, recursive=true)
     rm(logdir; force=true, recursive=true)
@@ -24,7 +30,7 @@ function testcase(testdir, testconfig, testpostpro; np=1, rtol=1.0e-6, atol=1.0e
         errfile = "err.out"
         proc = run(
             pipeline(
-                ignorestatus(`palace -np $np -wdir $exampledir $testconfig`);
+                ignorestatus(`$palace -np $np -wdir $exampledir $testconfig`);
                 stdout=joinpath(logdir, logfile),
                 stderr=joinpath(logdir, errfile)
             )
