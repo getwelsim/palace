@@ -7,9 +7,9 @@
 #include <array>
 #include <limits>
 #include <map>
+#include <numeric>
 #include <sstream>
 #include <string>
-#include <numeric>
 #include <Eigen/Dense>
 #include "utils/communication.hpp"
 #include "utils/filesystem.hpp"
