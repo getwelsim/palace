@@ -9,6 +9,7 @@
 #include <map>
 #include <sstream>
 #include <string>
+#include <numeric>
 #include <Eigen/Dense>
 #include "utils/communication.hpp"
 #include "utils/filesystem.hpp"
